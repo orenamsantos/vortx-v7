@@ -10,8 +10,8 @@ const BRAND = {
 // GATE
 // ============================================================
 const GATE_DATA = {
-  headline: "Todo ano depois dos 40, o homem perde <span class='rotating-number'>23</span>% da sua força como homem.",
-  subheadline: "Cansaço que não passa. Ereção que falha. Barriga que não some. Vontade que foi embora. Em 3 minutos você vai saber exatamente o que está acontecendo com você — e se ainda dá tempo de reverter.",
+  headline: "Todo ano depois dos 40, o homem perde 23 % da sua força na hora H.",
+  subheadline: "Cansaço que não passa, dificuldade em dar conta do recado e falta de disposição — em 3 minutos você entende o que pode estar acontecendo e se ainda dá tempo de melhorar",
   cta: "QUERO SABER O QUE ESTÁ ACONTECENDO COMIGO",
   socialProof: "14.281 homens já reverteram. Resultado médio: 18 dias.",
   privacySeal: "Sigilo total • Anônimo • Não compartilhado",
