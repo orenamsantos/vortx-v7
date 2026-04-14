@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>VORTX — Diagnóstico de Performance Biológica</title>
+  <meta name="description" content="Descubra em 3 minutos o que está bloqueando sua performance masculina. Bio-Diagnóstico gratuito e personalizado para homens 40+.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- ═══ GATE ═══ -->
+    <section id="gate" class="screen gate active"></section>
+
+    <!-- ═══ PROGRESS BAR ═══ -->
+    <div class="progress-bar-container" id="progress-bar" style="display: none;">
+      <div class="progress-inner">
+        <button class="progress-back-btn" id="btn-back" aria-label="Voltar">‹</button>
+        <div style="flex:1">
+          <div class="progress-phases" id="progress-phases"></div>
+          <div class="progress-phase-labels" id="progress-labels"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ QUIZ ═══ -->
+    <section id="quiz" class="screen quiz-screen">
+      <div id="step-container" class="step-container"></div>
+    </section>
+
+    <!-- ═══ INTERSTITIAL ═══ -->
+    <section id="interstitial" class="screen interstitial"></section>
+
+    <!-- ═══ BRIDGE ═══ (nova tela entre resultado e protocolo) -->
+    <section id="bridge" class="screen bridge-screen"></section>
+
+    <!-- ═══ LOADING ═══ -->
+    <section id="loading" class="screen loading-screen"></section>
+
+    <!-- ═══ RESULT ═══ -->
+    <section id="result" class="screen result-screen"></section>
+
+    <!-- ═══ PROTOCOL ═══ -->
+    <section id="protocol" class="screen protocol-screen"></section>
+
+    <!-- ═══ PRICING ═══ -->
+    <section id="pricing" class="screen pricing-screen"></section>
+
+    <!-- ═══ THANK YOU ═══ -->
+    <section id="thankyou" class="screen thankyou-screen"></section>
+
+  </div>
+
+  <script src="js/quiz-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
