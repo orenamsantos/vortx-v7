@@ -3,7 +3,6 @@
    Dark Mode + Dourado + Clean/Spacious Layout
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ── Design Tokens ────────────────────────────────────────── */
 :root {
@@ -77,6 +76,8 @@ body::before {
     radial-gradient(ellipse at 50% 0%, rgba(22, 33, 62, 0.2) 0%, transparent 30%);
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  contain: strict;
 }
 
 a { color: var(--gold); text-decoration: none; }
@@ -265,8 +266,8 @@ a { color: var(--gold); text-decoration: none; }
   left: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(11, 11, 18, 0.95);
-  backdrop-filter: blur(20px);
+  background: #0B0B12;
+  
   padding: 16px 20px 12px;
   border-bottom: 1px solid var(--border-default);
 }

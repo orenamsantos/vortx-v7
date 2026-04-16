@@ -669,7 +669,7 @@
     const testimonialsHtml = TESTIMONIALS.map((t, i) => `
       <div class="loading-testimonial-card ${i === 0 ? "active" : ""}" data-testimonial="${i}">
         <div class="loading-testimonial-header">
-          <div class="loading-testimonial-avatar"><img src="${t.photo}" alt="${t.initials}"></div>
+          <div class="loading-testimonial-avatar"><img src="${t.photo}" alt="${t.initials}" loading="lazy" decoding="async" width="80" height="80"></div>
           <div>
             <div class="loading-testimonial-name">${t.initials}, ${t.age} — ${t.occupation}</div>
             <div class="loading-testimonial-stars">★ ★ ★ ★ ★</div>
@@ -911,7 +911,7 @@
     const testimonialsHtml = filtered.map((t) => `
       <div class="testimonial-card">
         <div class="testimonial-header">
-          <div class="testimonial-avatar"><img src="${t.photo}" alt="${t.initials}"></div>
+          <div class="testimonial-avatar"><img src="${t.photo}" alt="${t.initials}" loading="lazy" decoding="async" width="80" height="80"></div>
           <div><div class="testimonial-name">${t.initials}, ${t.age} — ${t.occupation}</div></div>
         </div>
         <p class="testimonial-text">"${t.text}"</p>
