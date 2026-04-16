@@ -209,8 +209,11 @@
 
     const container = document.getElementById("step-container");
     container.classList.remove("fade-enter");
-    void container.offsetWidth;
-    container.classList.add("fade-enter");
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        container.classList.add("fade-enter");
+      });
+    });
 
     const isSingle = step.type === "single-select";
     const question = injectName(step.question);
