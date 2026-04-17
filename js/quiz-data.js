@@ -543,7 +543,7 @@ const PROTOCOL_DATA = {
     },
   ],
   seal: "Acesso restrito — baseado no seu diagnóstico",
-  cta: "QUERO ESSE PROTOCOLO — VER O PREÇO",
+  cta: "VER O PREÇO DO PROTOCOLO",
 };
 
 // ============================================================
