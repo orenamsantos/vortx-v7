@@ -83,10 +83,26 @@
         purchase: "Purchase",
         upsell_accept: "Purchase",
         crosssell_accept: "Purchase",
+        upsell_view: "ViewContent",
+        crosssell_view: "ViewContent",
       };
       var fbEvent = fbMap[eventName];
       if (fbEvent) {
-        fbq("track", fbEvent, params);
+        var fbParams = {};
+        if (params.value) fbParams.value = params.value;
+        if (params.currency) fbParams.currency = params.currency;
+        else if (params.value) fbParams.currency = "BRL";
+        if (params.product) {
+          fbParams.content_type = "product";
+          fbParams.content_ids = [params.product];
+          fbParams.content_name = params.product;
+        } else if (params.plan) {
+          fbParams.content_type = "product";
+          fbParams.content_ids = [params.plan];
+          fbParams.content_name = params.plan;
+        }
+        if (params.score) fbParams.content_category = "quiz_score_" + params.score;
+        fbq("track", fbEvent, fbParams);
       } else {
         fbq("trackCustom", eventName, params);
       }
