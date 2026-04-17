@@ -933,12 +933,12 @@
       </div>
       <div class="protocol-features">${featuresHtml}</div>
       <div class="protocol-seal">🏥 ${PROTOCOL_DATA.seal}</div>
+      <div style="padding:16px 0;display:flex;justify-content:center;">
+        <button class="btn-cta" id="btn-go-pricing">${PROTOCOL_DATA.cta}</button>
+      </div>
       <div>
         <p class="testimonials-title">Quem tinha o mesmo problema que você</p>
         ${testimonialsHtml}
-      </div>
-      <div style="padding:16px 0;display:flex;justify-content:center;">
-        <button class="btn-cta" id="btn-go-pricing">${PROTOCOL_DATA.cta}</button>
       </div>
     `;
 
