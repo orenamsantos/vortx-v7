@@ -951,10 +951,10 @@
 
     const painArea  = state.answers[21];
     const name      = state.userData.name || "";
-    const ctaBase   = PRICING_DATA.checkoutCtaMap[painArea] || PRICING_DATA.checkoutCtaMap._default;
-    const buildCheckoutCta = (price) => {
-      const prefix = name ? `${name.toUpperCase()}, ` : "";
-      return `${prefix}${ctaBase} — R$ <span id="checkout-price">${price}</span>`;
+    const buildCheckoutCta = (planId) => {
+      const plan = PRICING_DATA.plans.find((p) => p.id === planId);
+      if (!plan) return "";
+      return `<span style="display:block;font-size:0.65rem;letter-spacing:2px;opacity:0.7;margin-bottom:2px;">${plan.ctaTag}</span>${plan.ctaLabel}<br><span style="display:block;font-size:1.4rem;margin-top:4px;">R$ ${plan.price}</span>`;
     };
 
     const plansHtml = PRICING_DATA.plans.map((plan) => {
@@ -1019,7 +1019,7 @@
       </div>
 
       <div class="checkout-cta-block">
-        <button class="btn-cta btn-cta--checkout" id="btn-checkout">${buildCheckoutCta(selectedPrice)}</button>
+        <button class="btn-cta btn-cta--checkout" id="btn-checkout">${buildCheckoutCta(state.selectedPlan)}</button>
         <p class="checkout-sub">Acesso na hora • Sem mensalidade escondida • Cancela quando quiser</p>
         <div class="payment-methods">
           ${PRICING_DATA.paymentMethods.map((m) => `<span class="payment-method">${m}</span>`).join("")}
@@ -1057,12 +1057,10 @@
           document.getElementById("btn-recover-offer").addEventListener("click", () => {
             state.timerSeconds = 10 * 60;
             plansEl.innerHTML = originalPlansHtml;
-            const painArea = state.answers[21];
-            const ctaBase  = PRICING_DATA.checkoutCtaMap[painArea] || PRICING_DATA.checkoutCtaMap._default;
-            const name     = state.userData.name || "";
-            rebindPlanSelection((price) => {
-              const prefix = name ? `${name.toUpperCase()}, ` : "";
-              return `${prefix}${ctaBase} — R$ <span id="checkout-price">${price}</span>`;
+            rebindPlanSelection((planId) => {
+              const plan = PRICING_DATA.plans.find((p) => p.id === planId);
+              if (!plan) return "";
+              return `<span style="display:block;font-size:0.65rem;letter-spacing:2px;opacity:0.7;margin-bottom:2px;">${plan.ctaTag}</span>${plan.ctaLabel}<br><span style="display:block;font-size:1.4rem;margin-top:4px;">R$ ${plan.price}</span>`;
             });
             startPricingTimer();
           });
@@ -1085,11 +1083,8 @@
         document.querySelectorAll(".pricing-plan").forEach((p) => p.classList.remove("selected"));
         this.classList.add("selected");
         state.selectedPlan = this.dataset.plan;
-        const price = PRICING_DATA.plans.find((p) => p.id === state.selectedPlan).price;
         const btn   = document.getElementById("btn-checkout");
-        if (btn && buildCtaFn) btn.innerHTML = buildCtaFn(price);
-        const priceEl = document.getElementById("checkout-price");
-        if (priceEl) priceEl.textContent = price;
+        if (btn && buildCtaFn) btn.innerHTML = buildCtaFn(state.selectedPlan);
       });
     });
   }

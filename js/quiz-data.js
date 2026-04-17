@@ -664,6 +664,8 @@ const PRICING_DATA = {
       period: "paga uma vez — acesso para sempre",
       description: "O protocolo completo, sem restrição",
       badge: "🔓 MELHOR OPÇÃO",
+      ctaLabel: "COMEÇAR COMPLETO AGORA",
+      ctaTag: "PLANO PRINCIPAL",
       features: [
         "Tamanho e firmeza de volta em 90 dias",
         "Duro de manhã, firme na hora H — sem remedinho",
@@ -681,6 +683,8 @@ const PRICING_DATA = {
       period: "por mês — só o básico",
       description: "Acesso limitado",
       badge: null,
+      ctaLabel: "COMEÇAR PEQUENO",
+      ctaTag: "PLANO BÁSICO",
       features: [
         "Só o básico — sem o protocolo de circulação",
         "Sem o módulo de firmeza e tamanho",
