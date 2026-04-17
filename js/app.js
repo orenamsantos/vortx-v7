@@ -1037,7 +1037,7 @@
     document.getElementById("btn-checkout").addEventListener("click", () => {
       var plan = PRICING_DATA.plans.find(function(p) { return p.id === state.selectedPlan; });
       if (window.vortxTrack) vortxTrack("begin_checkout", { value: plan ? plan.price : 0, currency: "BRL", plan: state.selectedPlan });
-      // CHECKOUT AQUI
+      var checkoutUrl = state.selectedPlan === "vitalicio" ? "https://checkout.ticto.app/O72D72A5C" : "https://checkout.ticto.app/O67CE2B50"; window.location.href = checkoutUrl;
     });
     startPricingTimer();
   }
