@@ -92,7 +92,7 @@
       }
     } catch (e) { }
 
-    // TikTok — mapeia eventos para o padrão do TikTok
+    // TikTok — mapeia eventos com parâmetros obrigatórios
     try {
       var ttMap = {
         quiz_start: "SubmitForm",
@@ -102,12 +102,30 @@
         purchase: "CompletePayment",
         upsell_accept: "CompletePayment",
         crosssell_accept: "CompletePayment",
+        upsell_view: "ViewContent",
+        crosssell_view: "ViewContent",
       };
       var ttEvent = ttMap[eventName];
       if (ttEvent) {
-        ttq.track(ttEvent, params);
-      } else {
-        ttq.track(eventName, params);
+        // Construir parâmetros no formato que o TikTok exige
+        var ttParams = {};
+        ttParams.content_type = "product";
+        ttParams.description = eventName;
+        if (params.value) ttParams.value = params.value;
+        if (params.currency) ttParams.currency = params.currency;
+        else if (params.value) ttParams.currency = "BRL";
+        if (params.product) {
+          ttParams.content_id = params.product;
+          ttParams.content_name = params.product;
+        } else if (params.plan) {
+          ttParams.content_id = params.plan;
+          ttParams.content_name = params.plan;
+        } else {
+          ttParams.content_id = "vortx";
+          ttParams.content_name = "vortx";
+        }
+        ttParams.quantity = 1;
+        ttq.track(ttEvent, ttParams);
       }
     } catch (e) { }
 
