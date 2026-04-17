@@ -10,292 +10,176 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0B0B12;--bg2:#101018;--card:rgba(255,255,255,.04);--card-h:rgba(255,255,255,.07);
-  --gold:#C9A84C;--gold-l:#DFC373;--gold-d:#A68B3A;--gold-glow:rgba(201,168,76,.12);--gold-sub:rgba(201,168,76,.06);
-  --txt:#F0EDE6;--txt2:#9A978F;--txt3:#5C5A54;
-  --brd:rgba(255,255,255,.06);--brd-h:rgba(255,255,255,.12);
-  --red:#C44B4B;--green:#4CAF6A;--amber:#D4940A;
-  --r-card:20px;--r-btn:50px;--r-sm:12px;--r-md:16px;
-  --ff-d:'Playfair Display',Georgia,serif;--ff-b:'Inter',-apple-system,sans-serif;--ff-m:'JetBrains Mono',monospace;
-}
+:root{--bg:#0B0B12;--bg2:#101018;--card:rgba(255,255,255,.04);--gold:#C9A84C;--gold-l:#DFC373;--gold-d:#A68B3A;--gold-glow:rgba(201,168,76,.12);--gold-sub:rgba(201,168,76,.06);--txt:#F0EDE6;--txt2:#9A978F;--txt3:#5C5A54;--brd:rgba(255,255,255,.06);--brd-h:rgba(255,255,255,.12);--red:#C44B4B;--green:#4CAF6A;--amber:#D4940A;--r-card:20px;--r-btn:50px;--r-sm:12px;--r-md:16px;--ff-d:'Playfair Display',Georgia,serif;--ff-b:'Inter',-apple-system,sans-serif;--ff-m:'JetBrains Mono',monospace}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{font-size:16px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
 body{font-family:var(--ff-b);background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 10% 20%,rgba(22,33,62,.3) 0,transparent 50%),radial-gradient(ellipse at 90% 80%,rgba(201,168,76,.04) 0,transparent 50%);pointer-events:none;z-index:0}
-
 .page{position:relative;z-index:1;max-width:540px;margin:0 auto;padding:0 20px}
-
-/* ═══ CONFIRMATION HEADER ═══ */
-.confirm{text-align:center;padding:48px 0 40px;border-bottom:1px solid var(--brd)}
+.confirm{text-align:center;padding:48px 0 36px;border-bottom:1px solid var(--brd)}
 .confirm-check{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--green),#2d8a4e);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;animation:popIn .6s cubic-bezier(.34,1.56,.64,1)}
 @keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
 .confirm-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1px solid rgba(76,175,106,.25);border-radius:var(--r-btn);font-size:.68rem;font-weight:600;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
 .confirm-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
 .confirm h1{font-family:var(--ff-d);font-weight:700;font-size:clamp(1.5rem,5vw,2rem);line-height:1.25;margin-bottom:8px}
-.confirm h1 span{color:var(--gold)}
 .confirm p{font-size:.95rem;color:var(--txt2);max-width:400px;margin:0 auto}
-
-/* ═══ STEPS ═══ */
-.steps{padding:32px 0;display:flex;flex-direction:column;gap:10px}
-.step{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);transition:border-color .25s}
-.step:hover{border-color:var(--brd-h)}
+.steps{padding:28px 0;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card)}
 .step-n{font-family:var(--ff-m);font-size:.8rem;font-weight:700;color:var(--gold);width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--gold-sub);border-radius:var(--r-sm);flex-shrink:0}
-.step-t{font-weight:600;font-size:.9rem;color:var(--txt)}
-.step-d{font-size:.78rem;color:var(--txt3);margin-top:2px}
-
-/* ═══ DIVIDER ═══ */
-.divider{display:flex;align-items:center;gap:16px;padding:40px 0;color:var(--txt3);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:600}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--brd),transparent)}
-
-/* ═══ UPSELL ═══ */
+.step-t{font-weight:600;font-size:.9rem}.step-d{font-size:.78rem;color:var(--txt3);margin-top:2px}
+.divider{display:flex;align-items:center;gap:16px;padding:36px 0 32px;color:var(--red);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(196,75,75,.3),transparent)}
 .upsell{padding:0 0 48px}
-.upsell-urgency{text-align:center;padding:14px;background:rgba(212,148,10,.06);border:1px solid rgba(212,148,10,.15);border-radius:var(--r-md);margin-bottom:28px}
-.upsell-urgency-label{font-size:.72rem;color:var(--amber);font-weight:500;margin-bottom:4px}
-.upsell-urgency-timer{font-family:var(--ff-m);font-size:1.5rem;font-weight:700;color:var(--amber);letter-spacing:2px}
-.upsell-urgency-sub{font-size:.7rem;color:var(--txt3);margin-top:4px}
-
-.upsell-headline{text-align:center;margin-bottom:24px}
-.upsell-headline .tag{display:inline-block;font-family:var(--ff-m);font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.upsell-headline h2{font-family:var(--ff-d);font-weight:700;font-size:clamp(1.4rem,4.5vw,1.8rem);line-height:1.25}
-.upsell-headline h2 em{color:#F0D78C;font-style:normal;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:4px;text-decoration-thickness:2px}
-.upsell-headline p{font-size:.92rem;color:var(--txt2);margin-top:10px;line-height:1.65}
-
-.upsell-reason{padding:18px 20px;border-left:3px solid var(--red);background:rgba(196,75,75,.05);border-radius:0 var(--r-sm) var(--r-sm) 0;margin-bottom:24px}
-.upsell-reason p{font-size:.9rem;color:var(--txt2);line-height:1.65;margin:0}
-.upsell-reason strong{color:var(--txt);display:block;margin-top:8px}
-
-.upsell-features{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.upsell-feat{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);text-align:left;transition:border-color .25s}
-.upsell-feat:hover{border-color:var(--brd-h)}
-.upsell-feat-icon{font-size:1.3rem;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:var(--gold-sub);border-radius:var(--r-sm);flex-shrink:0}
-.upsell-feat-title{font-weight:600;font-size:.92rem;color:var(--txt);margin-bottom:3px}
-.upsell-feat-desc{font-size:.82rem;color:var(--txt2);line-height:1.5}
-
-.upsell-social{padding:20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);margin-bottom:24px;text-align:left}
-.upsell-social-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.upsell-social-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold-d),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;color:var(--bg);flex-shrink:0}
-.upsell-social-name{font-weight:600;font-size:.85rem;color:var(--txt)}
-.upsell-social-stars{color:var(--gold);font-size:.7rem;margin-top:2px}
-.upsell-social-text{font-size:.85rem;color:var(--txt2);line-height:1.6;font-style:italic;margin-bottom:10px}
-.upsell-social-badge{font-family:var(--ff-m);font-size:.68rem;font-weight:600;color:var(--green);background:rgba(76,175,106,.08);padding:4px 10px;border-radius:var(--r-btn);display:inline-block;letter-spacing:.5px}
-
-.upsell-price{text-align:center;margin-bottom:20px}
-.upsell-price-compare{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:6px}
-.upsell-price-old{font-family:var(--ff-m);font-size:1rem;color:var(--txt3);text-decoration:line-through}
-.upsell-price-arrow{color:var(--gold);font-size:.9rem}
-.upsell-price-new{font-family:var(--ff-m);font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
-.upsell-price-new small{font-size:.9rem;font-weight:400;color:var(--txt3)}
-.upsell-price-saving{font-size:.78rem;color:var(--green);font-weight:600;margin-top:4px}
-.upsell-price-sub{font-size:.72rem;color:var(--txt3);margin-top:2px}
-
-/* ═══ CTA ═══ */
-.btn{display:flex;align-items:center;justify-content:center;padding:18px 40px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--bg);font-family:var(--ff-b);font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:var(--r-btn);cursor:pointer;transition:all .25s;width:100%;max-width:480px;margin:0 auto;min-height:60px;position:relative;overflow:hidden;box-shadow:0 6px 28px rgba(201,168,76,.25);text-decoration:none}
+.upsell-alert{text-align:center;padding:20px;background:rgba(196,75,75,.06);border:1px solid rgba(196,75,75,.2);border-radius:var(--r-md);margin-bottom:28px}
+.upsell-alert p{font-size:.92rem;color:var(--txt);line-height:1.65;margin:0}
+.upsell-alert strong{color:var(--red)}
+.upsell-alert em{color:#F0D78C;font-style:normal;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;text-decoration-thickness:2px}
+.upsell-timer{text-align:center;margin-bottom:24px}
+.upsell-timer-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(212,148,10,.08);border:1px solid rgba(212,148,10,.2);border-radius:var(--r-btn);font-family:var(--ff-m);font-size:.85rem;font-weight:600;color:var(--amber)}
+.upsell-head{text-align:center;margin-bottom:24px}
+.upsell-head .tag{display:inline-block;font-family:var(--ff-m);font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;padding:4px 12px;border:1px solid rgba(196,75,75,.25);border-radius:var(--r-btn)}
+.upsell-head h2{font-family:var(--ff-d);font-weight:700;font-size:clamp(1.5rem,5vw,1.9rem);line-height:1.2;margin-bottom:6px}
+.upsell-head h2 em{color:#F0D78C;font-style:normal}
+.upsell-head .sub{font-size:.88rem;color:var(--txt2);line-height:1.6;max-width:440px;margin:8px auto 0}
+.ingredients{padding:20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);margin-bottom:20px}
+.ingredients-title{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);text-align:center;margin-bottom:16px}
+.ingredients-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ingredient{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(255,255,255,.02);border:1px solid var(--brd);border-radius:var(--r-sm)}
+.ingredient-icon{font-size:1.4rem;flex-shrink:0}
+.ingredient-name{font-weight:600;font-size:.82rem}
+.ingredient-role{font-size:.7rem;color:var(--txt3);margin-top:1px}
+.ingredients-locked{text-align:center;margin-top:14px;font-size:.75rem;color:var(--txt3);font-style:italic}
+.ingredients-locked span{color:var(--gold)}
+.how{margin-bottom:20px}
+.how-title{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--txt3);text-align:center;margin-bottom:14px}
+.how-steps{display:flex;flex-direction:column;gap:8px}
+.how-step{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card)}
+.how-step-time{font-family:var(--ff-m);font-size:.7rem;font-weight:700;color:var(--gold);background:var(--gold-sub);padding:6px 10px;border-radius:var(--r-sm);flex-shrink:0;text-align:center;min-width:52px}
+.how-step-text{font-size:.85rem;color:var(--txt2);line-height:1.5}
+.how-step-text strong{color:var(--txt)}
+.testi{padding:20px;background:var(--card);border:1px solid var(--brd);border-radius:var(--r-card);margin-bottom:20px;text-align:left}
+.testi-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.testi-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.testi-avatar img{width:100%;height:100%;object-fit:cover}
+.testi-name{font-weight:600;font-size:.85rem}.testi-stars{color:var(--gold);font-size:.7rem;margin-top:2px}
+.testi-text{font-size:.85rem;color:var(--txt2);line-height:1.6;font-style:italic;margin-bottom:10px}
+.testi-badge{font-family:var(--ff-m);font-size:.68rem;font-weight:600;color:var(--green);background:rgba(76,175,106,.08);padding:4px 10px;border-radius:var(--r-btn);display:inline-block}
+.price-block{text-align:center;margin-bottom:20px}
+.price-compare{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px}
+.price-old{font-family:var(--ff-m);font-size:1rem;color:var(--txt3);text-decoration:line-through}
+.price-arrow{color:var(--gold);font-size:.9rem}
+.price-new{font-family:var(--ff-m);font-size:2.4rem;font-weight:700;color:var(--gold);line-height:1}
+.price-new small{font-size:.9rem;font-weight:400;color:var(--txt3)}
+.price-saving{font-size:.78rem;color:var(--green);font-weight:600;margin-top:4px}
+.price-sub{font-size:.72rem;color:var(--txt3);margin-top:2px}
+.guarantee{padding:18px 20px;background:var(--card);border:1px solid rgba(201,168,76,.2);border-radius:var(--r-card);text-align:center;margin-bottom:20px}
+.guarantee-icon{font-size:1.6rem;margin-bottom:6px}
+.guarantee-title{font-weight:600;font-size:.88rem;margin-bottom:4px}
+.guarantee-text{font-size:.8rem;color:var(--txt2);line-height:1.6}
+.btn{display:flex;align-items:center;justify-content:center;padding:18px 40px;background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--bg);font-family:var(--ff-b);font-weight:700;font-size:.85rem;letter-spacing:1.5px;text-transform:uppercase;border:none;border-radius:var(--r-btn);cursor:pointer;transition:all .25s;width:100%;max-width:480px;margin:0 auto;min-height:60px;position:relative;overflow:hidden;box-shadow:0 6px 28px rgba(201,168,76,.25);text-decoration:none;flex-direction:column;line-height:1.3}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(201,168,76,.3)}
 .btn:active{transform:translateY(0)}
 .btn::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 4s ease-in-out infinite;will-change:transform}
 @keyframes shimmer{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
-
-.btn-sub{font-size:.73rem;color:var(--txt3);text-align:center;margin-top:10px;letter-spacing:.3px}
-
-.btn-skip{display:block;text-align:center;margin:20px auto 0;font-size:.78rem;color:var(--txt3);cursor:pointer;text-decoration:none;letter-spacing:.3px;transition:color .25s;border:none;background:none;font-family:var(--ff-b);padding:8px;width:100%}
+.btn-price{font-size:1.3rem;margin-top:2px}
+.btn-sub{font-size:.72rem;color:var(--txt3);text-align:center;margin-top:10px}
+.btn-skip{display:block;text-align:center;margin:20px auto 0;font-size:.78rem;color:var(--txt3);cursor:pointer;letter-spacing:.3px;transition:color .25s;border:none;background:none;font-family:var(--ff-b);padding:8px;width:100%;text-decoration:none}
 .btn-skip:hover{color:var(--txt2)}
-
-/* ═══ GUARANTEE ═══ */
-.guarantee{padding:20px;background:var(--card);border:1px solid rgba(201,168,76,.2);border-radius:var(--r-card);text-align:center;margin-bottom:20px}
-.guarantee-icon{font-size:1.8rem;margin-bottom:8px}
-.guarantee-title{font-weight:600;font-size:.92rem;color:var(--txt);margin-bottom:6px}
-.guarantee-text{font-size:.82rem;color:var(--txt2);line-height:1.6}
-
-/* ═══ FOOTER ═══ */
 .footer{text-align:center;padding:32px 0 40px;border-top:1px solid var(--brd)}
 .footer-logo{font-family:var(--ff-b);font-weight:700;font-size:.9rem;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
 .footer-logo span{display:inline-block;width:5px;height:5px;background:var(--gold);border-radius:50%;margin-left:2px;vertical-align:middle}
-.footer p{font-size:.7rem;color:var(--txt3);letter-spacing:.3px}
-
-/* ═══ ANIMATIONS ═══ */
+.footer p{font-size:.7rem;color:var(--txt3)}
 .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .6s ease forwards}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-.delay-1{animation-delay:.1s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.3s}
-.delay-4{animation-delay:.4s}.delay-5{animation-delay:.5s}.delay-6{animation-delay:.6s}
-.delay-7{animation-delay:.7s}.delay-8{animation-delay:.8s}
+.d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}.d8{animation-delay:.8s}.d9{animation-delay:.9s}
+@media(max-width:479px){.ingredients-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="page">
-
-  <!-- ═══ CONFIRMAÇÃO ═══ -->
   <div class="confirm fade-up">
     <div class="confirm-check">✓</div>
     <div class="confirm-badge">Pagamento Confirmado</div>
     <h1>Bem-vindo ao outro lado, <span id="user-name">Guerreiro</span>.</h1>
     <p>Seu acesso ao Protocolo VORTX foi liberado. O link chega no seu email em até 5 minutos.</p>
   </div>
-
-  <!-- ═══ PRÓXIMOS PASSOS ═══ -->
   <div class="steps">
-    <div class="step fade-up delay-1">
-      <div class="step-n">01</div>
-      <div><div class="step-t">Acesso chega em até 5 minutos</div><div class="step-d">O link vai pro seu email assim que o pagamento confirmar.</div></div>
-    </div>
-    <div class="step fade-up delay-2">
-      <div class="step-n">02</div>
-      <div><div class="step-t">Comece pelo protocolo de circulação</div><div class="step-d">É a primeira lista do guia. Leia hoje, compre amanhã cedo, comece amanhã à noite.</div></div>
-    </div>
-    <div class="step fade-up delay-3">
-      <div class="step-n">03</div>
-      <div><div class="step-t">Siga sem modificar</div><div class="step-d">Algumas coisas vão parecer estranhas. Faz assim mesmo. É onde está o resultado.</div></div>
-    </div>
-    <div class="step fade-up delay-4">
-      <div class="step-n">04</div>
-      <div><div class="step-t">Não precisa contar pra ninguém</div><div class="step-d">As pessoas ao seu redor vão notar. Deixa o resultado falar por você.</div></div>
-    </div>
+    <div class="step fade-up d1"><div class="step-n">01</div><div><div class="step-t">Acesso chega em até 5 minutos</div><div class="step-d">O link vai pro seu email assim que o pagamento confirmar.</div></div></div>
+    <div class="step fade-up d2"><div class="step-n">02</div><div><div class="step-t">Comece pelo protocolo de circulação</div><div class="step-d">É a primeira lista do guia. Leia hoje, compre amanhã cedo, comece amanhã à noite.</div></div></div>
+    <div class="step fade-up d3"><div class="step-n">03</div><div><div class="step-t">Siga sem modificar</div><div class="step-d">Algumas coisas vão parecer estranhas. Faz assim mesmo. É onde está o resultado.</div></div></div>
+    <div class="step fade-up d4"><div class="step-n">04</div><div><div class="step-t">Não precisa contar pra ninguém</div><div class="step-d">As pessoas ao seu redor vão notar. Deixa o resultado falar por você.</div></div></div>
   </div>
-
-  <!-- ═══ DIVISOR ═══ -->
-  <div class="divider fade-up delay-5">Oferta exclusiva de boas-vindas</div>
-
-  <!-- ═══ UPSELL ═══ -->
+  <div class="divider fade-up d5">⚠ Espera — leia antes de sair</div>
   <div class="upsell">
-
-    <div class="upsell-urgency fade-up delay-5">
-      <div class="upsell-urgency-label">Essa oferta expira em:</div>
-      <div class="upsell-urgency-timer" id="upsell-timer">10:00</div>
-      <div class="upsell-urgency-sub">Depois disso, volta para R$497</div>
+    <div class="upsell-alert fade-up d5">
+      <p>Seu acesso ao VORTX já está garantido. Porém, <strong>sua testosterona ainda vai demorar 21 dias pra subir</strong>. Isso significa 21 noites no escuro. <em>A não ser que você adicione isso agora.</em></p>
     </div>
-
-    <div class="upsell-headline fade-up delay-5">
-      <div class="tag">⚡ Só para quem acabou de entrar</div>
-      <h2>O Protocolo Te Mostra <em>o Que Fazer.</em><br>O Acelerador Te Mostra <em>Como Fazer em Metade do Tempo.</em></h2>
-      <p>Você acabou de garantir o mapa. Agora existe um atalho — e ele só aparece uma vez.</p>
+    <div class="upsell-timer fade-up d5">
+      <div class="upsell-timer-badge">⏱ Oferta expira em <span id="upsell-timer">05:00</span></div>
     </div>
-
-    <div class="upsell-reason fade-up delay-6">
-      <p>O protocolo padrão leva 60–90 dias pra resultado completo. Com o Acelerador, homens com o mesmo perfil que o seu relatam mudança visível em <strong>21 a 30 dias</strong>. A diferença não é mágica — é dosagem, sequência e timing exato.</p>
-      <strong>Quem ativa o Acelerador nos primeiros 10 minutos tem 4x mais chance de terminar o protocolo inteiro.</strong>
+    <div class="upsell-head fade-up d6">
+      <div class="tag">🔬 OFERTA ÚNICA — SÓ NESTA PÁGINA</div>
+      <h2>Soro de <em>120 Minutos</em></h2>
+      <p class="sub">A receita de emergência que simula o efeito da pílula azul em 2 horas — com 4 ingredientes de supermercado. Sem remédio. Sem receita. Sem risco pro coração.</p>
     </div>
-
-    <div class="upsell-features">
-      <div class="upsell-feat fade-up delay-6">
-        <div class="upsell-feat-icon">🧬</div>
-        <div>
-          <div class="upsell-feat-title">Protocolo Vascular Avançado</div>
-          <div class="upsell-feat-desc">O módulo que destranca a circulação de onde mais importa. A maioria dos homens nota diferença na primeira semana. Sozinho vale mais que o protocolo inteiro.</div>
-        </div>
+    <div class="ingredients fade-up d6">
+      <div class="ingredients-title">O que tem dentro</div>
+      <div class="ingredients-grid">
+        <div class="ingredient"><div class="ingredient-icon">🫀</div><div><div class="ingredient-name">Suco de Beterraba</div><div class="ingredient-role">Vasodilatador natural</div></div></div>
+        <div class="ingredient"><div class="ingredient-icon">🍉</div><div><div class="ingredient-name">Extrato de Melancia</div><div class="ingredient-role">Precursor de citrulina</div></div></div>
+        <div class="ingredient"><div class="ingredient-icon">🧬</div><div><div class="ingredient-name">L-Arginina</div><div class="ingredient-role">Dispara óxido nítrico</div></div></div>
+        <div class="ingredient"><div class="ingredient-icon">🔒</div><div><div class="ingredient-name">Ingrediente #4</div><div class="ingredient-role">Revelado no acesso</div></div></div>
       </div>
-      <div class="upsell-feat fade-up delay-6">
-        <div class="upsell-feat-icon">🔬</div>
-        <div>
-          <div class="upsell-feat-title">Mapa Hormonal Personalizado</div>
-          <div class="upsell-feat-desc">Plano de compostos calibrado pela sua idade, peso e sintomas. O que tomar, quanto, quando e por quanto tempo — sem adivinhação.</div>
-        </div>
-      </div>
-      <div class="upsell-feat fade-up delay-7">
-        <div class="upsell-feat-icon">🗓️</div>
-        <div>
-          <div class="upsell-feat-title">Cronograma de 30 Dias (Dia a Dia)</div>
-          <div class="upsell-feat-desc">Cada manhã e cada noite descritos. O que comer, o que tomar, o que fazer, quando dormir. Você não pensa — só executa.</div>
-        </div>
-      </div>
-      <div class="upsell-feat fade-up delay-7">
-        <div class="upsell-feat-icon">📞</div>
-        <div>
-          <div class="upsell-feat-title">Suporte Direto por WhatsApp — 90 Dias</div>
-          <div class="upsell-feat-desc">Acesso direto ao time de protocolo por 90 dias. Dúvida? Manda mensagem. Resposta em até 4 horas, de segunda a sábado.</div>
-        </div>
-      </div>
-      <div class="upsell-feat fade-up delay-7">
-        <div class="upsell-feat-icon">🧪</div>
-        <div>
-          <div class="upsell-feat-title">Dosagem Noturna Anti-Estrogênio</div>
-          <div class="upsell-feat-desc">O protocolo que bloqueia a conversão de testosterona em hormônio feminino enquanto você dorme. É o módulo que os médicos não conhecem.</div>
-        </div>
+      <p class="ingredients-locked">A <span>dosagem exata, a sequência e o timing</span> fazem toda a diferença.</p>
+    </div>
+    <div class="how fade-up d7">
+      <div class="how-title">Como funciona</div>
+      <div class="how-steps">
+        <div class="how-step"><div class="how-step-time">18h</div><div class="how-step-text"><strong>Prepara o soro</strong> — 3 minutos com ingredientes que você já tem ou compra no mercado da esquina.</div></div>
+        <div class="how-step"><div class="how-step-time">19h</div><div class="how-step-text"><strong>Toma numa dose</strong> — o óxido nítrico começa a subir. Você vai sentir o corpo esquentar.</div></div>
+        <div class="how-step"><div class="how-step-time">20h</div><div class="how-step-text"><strong>Efeito no pico</strong> — circulação aberta, sangue fluindo. <strong>Pronto pra usar.</strong></div></div>
       </div>
     </div>
-
-    <!-- DEPOIMENTO -->
-    <div class="upsell-social fade-up delay-7">
-      <div class="upsell-social-header">
-        <div class="upsell-social-avatar"><img src="https://i.pravatar.cc/80?img=64" alt="Ricardo F." style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
-        <div>
-          <div class="upsell-social-name">Ricardo F., 55 — Advogado</div>
-          <div class="upsell-social-stars">★ ★ ★ ★ ★</div>
-        </div>
+    <div class="testi fade-up d7">
+      <div class="testi-head">
+        <div class="testi-avatar"><img src="https://i.pravatar.cc/80?img=65" alt="Marcos T." loading="lazy"></div>
+        <div><div class="testi-name">Marcos T., 48 — Caminhoneiro</div><div class="testi-stars">★ ★ ★ ★ ★</div></div>
       </div>
-      <div class="upsell-social-text">"O protocolo base já era bom. Mas quando ativei o Acelerador, em 12 dias eu já tava acordando duro de manhã. Minha mulher achou que eu tava tomando remédio. Não tava. Era o protocolo vascular."</div>
-      <span class="upsell-social-badge">Resultado visível em 12 dias</span>
+      <div class="testi-text">"Cheguei da estrada num sábado e fiz o soro. Minha mulher não sabia o que tinha acontecido. Fazia meses que ela já nem esperava nada. Aquela noite mudou tudo."</div>
+      <span class="testi-badge">Resultado na primeira noite</span>
     </div>
-
-    <!-- PREÇO -->
-    <div class="upsell-price fade-up delay-8">
-      <div class="upsell-price-compare">
-        <span class="upsell-price-old">R$ 497</span>
-        <span class="upsell-price-arrow">→</span>
-        <div class="upsell-price-new"><small>R$</small> 197</div>
-      </div>
-      <div class="upsell-price-saving">Economia de R$300 — só nesta página</div>
-      <div class="upsell-price-sub">Pagamento único • Acesso vitalício</div>
+    <div class="price-block fade-up d8">
+      <div class="price-compare"><span class="price-old">R$ 97</span><span class="price-arrow">→</span><div class="price-new"><small>R$</small> 47</div></div>
+      <div class="price-saving">Só hoje — direto ao seu pedido</div>
+      <div class="price-sub">Pagamento único • Acesso imediato</div>
     </div>
-
-    <!-- GARANTIA -->
-    <div class="guarantee fade-up delay-8">
+    <div class="guarantee fade-up d8">
       <div class="guarantee-icon">🛡️</div>
-      <div class="guarantee-title">30 Dias de Garantia Total</div>
-      <p class="guarantee-text">Se em 30 dias você não sentir diferença real na sua energia, firmeza e disposição — devolvo os R$197 sem perguntar. Risco zero.</p>
+      <div class="guarantee-title">Se não funcionar hoje à noite, devolvo tudo</div>
+      <p class="guarantee-text">Faz o soro, testa, e se não sentir diferença real — peça reembolso. Sem pergunta.</p>
     </div>
-
-    <!-- CTA -->
-    <div class="fade-up delay-8">
-      <a href="#" class="btn" id="btn-upsell">QUERO O ACELERADOR — R$ 197</a>
-      <p class="btn-sub">Acesso imediato • Sem mensalidade • Garantia de 30 dias</p>
-      <button class="btn-skip" id="btn-skip">Não, obrigado — vou seguir só com o protocolo base →</button>
+    <div class="fade-up d9">
+      <a href="#" class="btn" id="btn-upsell">ADICIONAR AO MEU PEDIDO<span class="btn-price">R$ 47</span></a>
+      <p class="btn-sub">Acesso imediato junto com o VORTX • Garantia total</p>
+      <button class="btn-skip" id="btn-skip">Não, vou esperar os 21 dias →</button>
     </div>
-
   </div>
-
-  <!-- ═══ FOOTER ═══ -->
-  <div class="footer">
-    <div class="footer-logo">VORTX<span></span></div>
-    <p>Protocolo de Performance Biológica Masculina</p>
-  </div>
-
+  <div class="footer"><div class="footer-logo">VORTX<span></span></div><p>Protocolo de Performance Biológica Masculina</p></div>
 </div>
-
 <script>
 (function(){
-  // ── Timer ──
-  let seconds = 10 * 60;
-  const timerEl = document.getElementById('upsell-timer');
-  const interval = setInterval(() => {
-    seconds--;
-    if (seconds <= 0) { clearInterval(interval); seconds = 0; }
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    timerEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-    if (seconds <= 60) timerEl.style.color = '#C44B4B';
-  }, 1000);
-
-  // ── Pegar nome da URL ──
-  const params = new URLSearchParams(window.location.search);
-  const name = params.get('name');
-  if (name) {
-    document.getElementById('user-name').textContent = decodeURIComponent(name);
-  }
-
-  // ── CTA Upsell ──
-  document.getElementById('btn-upsell').addEventListener('click', function(e) {
+  let sec=5*60;const el=document.getElementById('upsell-timer');
+  const iv=setInterval(()=>{sec--;if(sec<=0){clearInterval(iv);sec=0}const m=Math.floor(sec/60),s=sec%60;el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(sec<=60)el.style.color='#C44B4B'},1e3);
+  const p=new URLSearchParams(window.location.search),n=p.get('name');
+  if(n)document.getElementById('user-name').textContent=decodeURIComponent(n);
+  document.getElementById('btn-upsell').addEventListener('click',function(e){
     e.preventDefault();
-    // SUBSTITUIR PELO LINK DE CHECKOUT DO UPSELL
-    // window.location.href = 'https://seu-checkout.com/upsell?price=197';
-    alert('Conecte aqui o link do checkout do Acelerador (R$197)');
+    // TODO: processar pagamento do Soro, depois redirecionar
+    window.location.href='cross-sell.html?soro=sim'+(n?'&name='+encodeURIComponent(n):'');
   });
-
-  // ── Skip ──
-  document.getElementById('btn-skip').addEventListener('click', function() {
-    // Redirecionar para área de membros ou página final
-    // window.location.href = 'https://seu-site.com/membros';
-    alert('Conecte aqui o redirecionamento para a área de membros');
+  document.getElementById('btn-skip').addEventListener('click',function(){
+    window.location.href='cross-sell.html?soro=nao'+(n?'&name='+encodeURIComponent(n):'');
   });
 })();
 </script>
