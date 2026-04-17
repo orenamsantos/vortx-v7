@@ -49,6 +49,8 @@ h1 span{color:var(--gold)}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}
 </style>
+  <script src="js/tracking.min.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1492285522546817&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <div class="page">
@@ -99,6 +101,13 @@ h1 span{color:var(--gold)}
   const ignicao = p.get('ignicao');
   if (soro === 'sim') document.getElementById('item-soro').style.display = 'flex';
   if (ignicao === 'sim') document.getElementById('item-ignicao').style.display = 'flex';
+
+  // Track funnel complete
+  if(window.vortxTrack) vortxTrack('funnel_complete',{products_purchased: [
+    'vortx_protocol',
+    soro==='sim' ? 'soro_120' : null,
+    ignicao==='sim' ? 'protocolo_ignicao' : null
+  ].filter(Boolean)});
 
   document.getElementById('btn-access').addEventListener('click', function(e){
     e.preventDefault();

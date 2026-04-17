@@ -95,6 +95,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}.d8{animation-delay:.8s}.d9{animation-delay:.9s}
 @media(max-width:479px){.ingredients-grid{grid-template-columns:1fr}}
 </style>
+  <script src="js/tracking.min.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1492285522546817&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <div class="page">
@@ -173,12 +175,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   const iv=setInterval(()=>{sec--;if(sec<=0){clearInterval(iv);sec=0}const m=Math.floor(sec/60),s=sec%60;el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(sec<=60)el.style.color='#C44B4B'},1e3);
   const p=new URLSearchParams(window.location.search),n=p.get('name');
   if(n)document.getElementById('user-name').textContent=decodeURIComponent(n);
+  // Track purchase of main product
+  if(window.vortxTrack) vortxTrack('purchase',{value:67,currency:'BRL',product:'vortx_protocol'});
+  // Track upsell view
+  if(window.vortxTrack) vortxTrack('upsell_view',{product:'soro_120',value:47});
+
   document.getElementById('btn-upsell').addEventListener('click',function(e){
     e.preventDefault();
     // TODO: processar pagamento do Soro, depois redirecionar
+    if(window.vortxTrack) vortxTrack('upsell_accept',{value:47,currency:'BRL',product:'soro_120'});
     window.location.href='cross-sell.html?soro=sim'+(n?'&name='+encodeURIComponent(n):'');
   });
   document.getElementById('btn-skip').addEventListener('click',function(){
+    if(window.vortxTrack) vortxTrack('upsell_decline',{product:'soro_120'});
     window.location.href='cross-sell.html?soro=nao'+(n?'&name='+encodeURIComponent(n):'');
   });
 })();

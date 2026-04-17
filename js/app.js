@@ -172,6 +172,7 @@
     document.addEventListener("click", (e) => {
       if (e.target.id === "btn-start" || e.target.closest("#btn-start")) {
         unlockAudio();
+        if (window.vortxTrack) vortxTrack("quiz_start");
         showScreen("quiz");
         renderStep();
       }
@@ -206,6 +207,7 @@
     const step = getCurrentStep();
     if (!step) return;
     updateProgressBar();
+    if (window.vortxTrack) vortxTrack("quiz_step", { step_id: step.id, step_phase: step.phase, step_type: step.type });
 
     const container = document.getElementById("step-container");
     container.classList.remove("fade-enter");
@@ -667,6 +669,7 @@
   // ── LOADING SCREEN ────────────────────────────────────────
   function startLoading() {
     showScreen("loading");
+    if (window.vortxTrack) vortxTrack("quiz_complete");
     const name = state.userData.name || "você";
 
     const testimonialsHtml = TESTIMONIALS.map((t, i) => `
@@ -785,6 +788,7 @@
   function showResult() {
     showScreen("result");
     const score = state.score;
+    if (window.vortxTrack) vortxTrack("view_result", { score: score });
     const zone  = RESULT_DATA.scoreZones.find((z) => score >= z.min && score <= z.max);
     const name  = state.userData.name || "Usuário";
     const circ  = 2 * Math.PI * 80;
@@ -948,6 +952,7 @@
   // ── PRICING ───────────────────────────────────────────────
   function showPricing() {
     showScreen("pricing");
+    if (window.vortxTrack) vortxTrack("view_pricing", { score: state.score });
 
     const painArea  = state.answers[21];
     const name      = state.userData.name || "";
@@ -1030,6 +1035,8 @@
     rebindPlanSelection(buildCheckoutCta);
 
     document.getElementById("btn-checkout").addEventListener("click", () => {
+      var plan = PRICING_DATA.plans.find(function(p) { return p.id === state.selectedPlan; });
+      if (window.vortxTrack) vortxTrack("begin_checkout", { value: plan ? plan.price : 0, currency: "BRL", plan: state.selectedPlan });
       // CHECKOUT AQUI
     });
     startPricingTimer();

@@ -95,6 +95,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}.d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}
 </style>
+  <script src="js/tracking.min.js"></script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1492285522546817&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <div class="page">
@@ -192,13 +194,18 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
     ctxEl.innerHTML = '<p>Você dispensou o Soro — respeito. Mas ficar 21 dias esperando sem fazer nada é o caminho mais lento e mais frustrante. <strong>O Protocolo Ignição corta esse tempo pela metade.</strong> São 5 minutos por dia que fazem seu corpo começar a responder desde o dia 1.</p>';
   }
 
+  // Track cross-sell view
+  if(window.vortxTrack) vortxTrack('crosssell_view',{product:'protocolo_ignicao',value:27,soro_purchased:soro==='sim'});
+
   document.getElementById('btn-cross').addEventListener('click', function(e){
     e.preventDefault();
     // TODO: processar pagamento do Ignição, depois redirecionar
+    if(window.vortxTrack) vortxTrack('crosssell_accept',{value:27,currency:'BRL',product:'protocolo_ignicao'});
     window.location.href = 'acesso.html' + (n ? '?name=' + encodeURIComponent(n) : '');
   });
 
   document.getElementById('btn-skip-final').addEventListener('click', function(){
+    if(window.vortxTrack) vortxTrack('crosssell_decline',{product:'protocolo_ignicao'});
     window.location.href = 'acesso.html' + (n ? '?name=' + encodeURIComponent(n) : '');
   });
 })();
