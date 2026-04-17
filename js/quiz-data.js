@@ -649,11 +649,11 @@ const PRICING_DATA = {
   urgencyText: "Esse preço some em:",
   timerMinutes: 8,
   checkoutCtaMap: {
-    parceira: "QUERO VOLTAR A SER O HOMEM QUE MINHA MULHER MERECE",
-    eu_mesmo: "QUERO ME OLHAR NO ESPELHO COM ORGULHO DE NOVO",
-    trabalho: "QUERO MEU FOCO E ENERGIA DE VOLTA",
-    tudo:     "QUERO RECUPERAR TUDO DE UMA VEZ",
-    _default: "QUERO RESOLVER ISSO AGORA",
+    parceira: "COMEÇAR AGORA",
+    eu_mesmo: "COMEÇAR AGORA",
+    trabalho: "COMEÇAR AGORA",
+    tudo:     "COMEÇAR AGORA",
+    _default: "COMEÇAR AGORA",
   },
   plans: [
     {
