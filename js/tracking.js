@@ -184,4 +184,12 @@
   document.addEventListener("scroll", onInteraction, { once: true, passive: true });
   document.addEventListener("touchstart", onInteraction, { once: true, passive: true });
 
+  // Consume pre-load queue from inline script
+  if (window._vtq && window._vtq.length) {
+    for (var i = 0; i < window._vtq.length; i++) {
+      eventQueue.push(window._vtq[i]);
+    }
+    window._vtq = [];
+  }
+
 })();
